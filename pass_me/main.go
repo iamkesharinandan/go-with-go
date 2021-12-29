@@ -1,20 +1,32 @@
 package main
 
-import "os"
+import (
+	"fmt"
+	"os"
+)
+
+const (
+	usage    = "Usage: [username] [password]"
+	errUser  = "Access denied for %q.\n"
+	errPwd   = "Invalid password for %q.\n"
+	accessOk = "Access granted to %q.\n"
+
+	user     = "jack"
+	password = "1888"
+)
 
 func main() {
-	username, password := "knandan", "password"
+	args := os.Args
+	if len(args) != 3 {
+		fmt.Println(usage)
+	}
 
-	input := os.Args
-	if len(input) <= 1 {
-		println("Usage: [username] [password]")
-	} else if len(os.Args) == 2 {
-		println("Please enter the password")
-	} else if os.Args[1] != username {
-		println("Invalid Username")
-	} else if os.Args[2] != password {
-		println("Invalid Password")
+	u, p := args[1], args[2]
+	if u != user {
+		fmt.Printf(errUser, u)
+	} else if p != password {
+		fmt.Printf(errPwd, u)
 	} else {
-		println("You are logged in")
+		fmt.Printf(accessOk, u)
 	}
 }
