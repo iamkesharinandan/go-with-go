@@ -45,4 +45,17 @@ func main() {
 		fmt.Print("number")
 	}
 	fmt.Println("")
+
+	// sort switch
+	switch i = 142; {
+	case i > 100:
+		fmt.Print("big ")
+		fallthrough
+	case i > 0:
+		fmt.Print("positive ")
+		fallthrough
+	default:
+		fmt.Print("number")
+	}
+	fmt.Println("")
 }
